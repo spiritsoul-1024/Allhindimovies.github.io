@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyStream</title>
+
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial;
+      margin: 0;
+    }
+
+    header {
+      background: #181818;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input {
+      padding: 8px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 250px);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1f1f1f;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    video {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>MyStream</h2>
+  <input type="text" id="search" placeholder="Search videos...">
+</header>
+
+<div class="videos" id="videoList">
+
+  <!-- VIDEO 1 -->
+  <div class="card">
+    <img src="THUMBNAIL_LINK">
+    <p>My First Video</p>
+    <video controls>
+      <source src="VIDEO_LINK" type="video/mp4">
+    </video>
+  </div>
+
+</div>
+
+<script>
+  const search = document.getElementById("search");
+
+  search.addEventListener("keyup", function() {
+    let filter = search.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      let text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? "block" : "none";
+    });
+  });
+</script>
+
+</body>
+</html>
